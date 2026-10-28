@@ -1,0 +1,100 @@
+:root {
+  --bg: #f2f5f7;
+  --surface: #ffffff;
+  --ink: #14212b;
+  --muted: #55646f;
+  --line: #d3dce2;
+  --accent: #1f6f8b;
+  --accent-dark: #17556b;
+  --success-bg: #e3f4ea;
+  --success-ink: #14633a;
+  --error-bg: #fbe7e5;
+  --error-ink: #a1201a;
+  --loading-bg: #fff3d6;
+  --loading-ink: #7a5200;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+h1 { margin: 0; font-size: 2rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.lead { margin: 0.25rem 0 1.5rem; color: var(--muted); }
+
+button {
+  font: inherit;
+  padding: 0.55rem 1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--accent-dark); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+:focus-visible { outline: 3px solid #f0a500; outline-offset: 2px; }
+
+/* Status message: neutral by default, distinct colours per state */
+#status {
+  margin: 1rem 0;
+  padding: 0.65rem 0.9rem;
+  border-radius: 6px;
+  border-left: 5px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+}
+#status.status-loading { background: var(--loading-bg); color: var(--loading-ink); border-left-color: #d99a00; }
+#status.status-success { background: var(--success-bg); color: var(--success-ink); border-left-color: #2e9e5e; }
+#status.status-error   { background: var(--error-bg);   color: var(--error-ink);   border-left-color: #d6382f; font-weight: 600; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 1rem 1rem;
+}
+.field { margin-bottom: 0.9rem; }
+label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+input, textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #9fb0ba;
+  border-radius: 6px;
+  background: #fff;
+}
+input[aria-invalid="true"] { border-color: var(--error-ink); background: #fff8f7; }
+
+#notes-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+}
+.note p { margin: 0 0 0.75rem; color: var(--muted); }
+.delete-btn { background: var(--error-ink); padding: 0.35rem 0.8rem; font-size: 0.9rem; }
+.delete-btn:hover:not(:disabled) { background: #7d1712; }
+
+.empty-state {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+}
